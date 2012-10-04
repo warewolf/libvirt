@@ -193,13 +193,13 @@ virStorageBackendLogicalFindLVs(virStoragePoolObjPtr pool,
      *    not a suitable separator (rhbz 470693).
      */
     const char *regexes[] = {
-        "^\\s*(\\S+),(\\S*),(\\S+),(\\S+)\\((\\S+)\\),(\\S+),([0-9]+),?\\s*$"
+        "^\\s*(\\S+)#(\\S*)#(\\S+)#(\\S+)\\((\\S+)\\)#(\\S+)#([0-9]+)#?\\s*$"
     };
     int vars[] = {
         7
     };
     const char *prog[] = {
-        LVS, "--separator", ",", "--noheadings", "--units", "b",
+        LVS, "--separator", "#", "--noheadings", "--units", "b",
         "--unbuffered", "--nosuffix", "--options",
         "lv_name,origin,uuid,devices,seg_size,vg_extent_size",
         pool->def->source.name, NULL
